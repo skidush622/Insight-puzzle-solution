@@ -1,0 +1,6 @@
+1. Follow the commands in readme to run the server but failed.
+   Look into Dockerfile, found "EXPOSE 5001", then look into app.py, found app.run(host='0.0.0.0') didn't specify the port, so fix it.
+   Still failed. guess it may cause by the 8080. Look into docker-compose.yml, found ports: - "80:8080". It reversed. Should be 8080:80
+2. Can run the server, and see the index page.
+   Try to submit, found direct to localhost%2Clocalhost/8080/success. Checked redirect(url_for('success')), but it should be correct, don't know why.
+   Try to enter localhost/8080/success, found no data show. Look into success function. Found qry.all() is a collection of objects, can't assign to results directly. fix it by using a for loop to append the result list.
